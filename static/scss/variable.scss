@@ -1,0 +1,27 @@
+$color_border:#eee;
+$color_them:#0F367B;
+$color_them2:#2A57A8;
+$color_price:#FA3939;
+$color_bg:#BDCFEF;
+$body_color:#498fce;
+$pad_lr:0.75rem;
+
+/*flex布局*/
+@mixin flex($jc:center,$ai:center){
+    display: flex;
+    justify-content:$jc;
+    align-items: $ai;
+}
+/*高度上居中*/
+@mixin center_h($height){
+    line-height: $height;
+    height: $height;
+}
+/*圆/方*/
+@mixin round($R,$isR){
+    border-radius: if($isR,50%,null);
+    width: $R;
+    height: $R;
+}
+
+.btn_{margin: 1.3rem auto 1.1rem;width:13.75rem;height:2rem;display: flex;justify-content: center;align-items: center;font-size: .7rem;background: linear-gradient(180deg,rgba(243,207,13,1),rgba(223,191,16,1));border-radius:1rem;box-shadow:0px 0.075rem 0.175rem 0px rgba(0, 0, 0, 0.37);color: #fff;}
