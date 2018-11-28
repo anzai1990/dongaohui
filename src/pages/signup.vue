@@ -284,7 +284,7 @@ export default {
 			//报名表初始数据
 			this.$http({
 				method:"get",
-				url:baseUrl+'user/sign',
+				url:baseUrl+'user/sign?utoken='+this.token,
 			}).then((res)=>{
 				if(res.data.code=='200'){
 					let data=res.data.data//获取页面数据
@@ -349,7 +349,7 @@ export default {
 			var formData = new FormData()
 			formData.append('file',e.target.files[0])
 			console.log(formData)
-			this.$http.post(baseUrl+'file/uploadimage', formData)
+			this.$http.post(baseUrl+'file/uploadimage?utoken='+this.token, formData)
 			.then(res=> {
 				if(res.data.code="200"){
 					Indicator.close()
@@ -371,6 +371,7 @@ export default {
 				method:"post",
 				url:baseUrl+'user/sign_form',
 				data:this.toParams({
+					utoken:this.token,
 					region:this.Zone,//赛区名
 					group:this.Group,//参赛组别
 					user_name:this.name,//姓名

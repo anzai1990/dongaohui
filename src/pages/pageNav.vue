@@ -123,7 +123,7 @@ export default {
   				method:"post",
 			    url:baseUrl+'user/activityRule',
 			    data:this.toParams({
-			    	token:this.token,
+			    	utoken:this.token,
 			  	}),
 			  	headers:{
 			        'Content-type': 'application/x-www-form-urlencoded',

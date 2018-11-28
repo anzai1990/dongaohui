@@ -62,7 +62,7 @@ export default {
   	init(){
   		this.$http({
 				method:"get",
-				url:baseUrl+'user/activityRule',
+				url:baseUrl+'user/activityRule?utoken='+this.token,
 			}).then((res)=>{
 				if(res.data.code=='200'){
 					let data=res.data.data//获取页面数据

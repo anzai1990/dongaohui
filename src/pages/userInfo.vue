@@ -57,7 +57,7 @@ export default {
   	init(){
   		this.$http({
 				method:"get",
-				url:baseUrl+'user/userInfo?uid='+this.uid,
+				url:baseUrl+'user/userInfo?uid='+this.uid+'&utoken='+this.token,
 			}).then((res)=>{
 				if(res.data.code=='200'){
 					let data=res.data.data//获取页面数据
@@ -73,9 +73,10 @@ export default {
 		vote(){
 			this.$http({
 				method:"post",
-				url:baseUrl+'user/vote?',
+				url:baseUrl+'user/vote',
 				data:this.toParams({
 					uid:this.uid,//赛区名
+					utoken:this.token,
 				}),
 				headers:{
 					'Content-type': 'application/x-www-form-urlencoded',

@@ -53,7 +53,18 @@ export default {
   mounted(){
 		this.page=0;
 		this.keyword='';
-		this.token=sessionStorage.getItem("token");
+		if(!sessionStorage.getItem('token')){
+			if(this.$route.query.utoken){
+				this.token=this.$route.query.utoken
+				console.log(this.token)
+				sessionStorage.setItem('token',this.token);
+				window.location.href='http://dabang.yitoutiao.net/index.html#/match'
+			}else{
+				window.location.href='http://dabang.yitoutiao.net/index.html#/match'
+			}
+		}else{
+			this.token=sessionStorage.getItem('token')
+		}
 		this.keywords=this.$route.query.keywords;
 		this.init()
 	},
@@ -83,9 +94,9 @@ export default {
 			Toast({message:'载入中...',duration: 500 ,} );
 			let url='';
 			if(this.keywords){
-				url=baseUrl+'user/lists?page='+this.page+'&keywords='+this.keywords;
+				url=baseUrl+'user/lists?page='+this.page+'&keywords='+this.keywords+'&utoken='+this.token;
 			}else{
-				url=baseUrl+'user/lists?page='+this.page;
+				url=baseUrl+'user/lists?page='+this.page+'&utoken='+this.token;
 			}
 			this.$http({
 				method:"get",

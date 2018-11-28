@@ -79,7 +79,7 @@ export default {
 			Toast({message:'载入中...',duration: 500 ,} );
 			this.$http({
 				method:"get",
-				url:baseUrl+'user/popularity?page='+this.page,
+				url:baseUrl+'user/popularity?page='+this.page+'&utoken='+this.token,
 			}).then((res)=>{
 				if(res.data.code=='200'){
 					let data=res.data.data//获取页面数据

@@ -46,18 +46,20 @@ const router=createRouter()
 
 router.beforeEach((to,from,next)=>{
 	window.document.title = to.meta.title;
-	/* if(to.fullPath === '/Login'){
-		next()
-	}else{
-		if(sessionStorage.getItem("token")){
-			next();
-		}else{
-			next({
-				path: '/Login',
-			})
-		}
-	} */
-	next();
+  	next()
+})
+
+router.beforeEach((to,from,next)=>{
+	if (to.path === '/match') {
+    next();
+  } else {
+    let token = sessionStorage.getItem('token');
+    if(!token){
+      next('/match');
+    } else {
+      next();
+    }
+  }
 })
 
 /*全局路由守卫
