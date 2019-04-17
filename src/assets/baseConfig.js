@@ -1,5 +1,5 @@
 const baseConfig={
 	imgUrl:"../static/img/",
-	baseUrl:"http://dabang.yitoutiao.net/api/",
+	baseUrl:"***",
 };
 module.exports = baseConfig;
